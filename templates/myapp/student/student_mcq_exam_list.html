@@ -1,0 +1,9 @@
+<!-- student_mcq_exam_list.html -->
+<h1>Available MCQ Exams</h1>
+<ul>
+  {% for exam in exams %}
+    <li>
+      <a href="{% url 'take_mcq_exam' exam_id=exam.id %}">{{ exam.title }}</a>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,23 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+{% block content %}
+  <h2>Create New MCQ Exam</h2>
+  <form method="post">
+    {% csrf_token %}
+    <fieldset>
+      <legend>Exam Details</legend>
+      {{ exam_form.as_p }}
+    </fieldset>
+    <fieldset>
+      <legend>Questions</legend>
+      {{ question_formset.management_form }}
+      {% for form in question_formset %}
+        <div class="question-form">
+          <h4>Question {{ forloop.counter }}</h4>
+          {{ form.as_p }}
+        </div>
+      {% endfor %}
+    </fieldset>
+    <button type="submit">Create Exam</button>
+  </form>
+{% endblock %}

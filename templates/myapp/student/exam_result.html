@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <h2>Exam Result</h2>
+  <p>Exam: {{ exam.title }}</p>
+  <p>Your Score: {{ score }}</p>
+  <a href="{% url 'student_dashboard' %}">Return to Dashboard</a>
+{% endblock %}

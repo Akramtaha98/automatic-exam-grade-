@@ -1,0 +1,18 @@
+{% extends "myapp/base.html" %}
+{% block content %}
+  <h2>Available MCQ Exams</h2>
+  {% if exams %}
+    <ul>
+      {% for exam in exams %}
+        <li>
+          <a href="{% url 'take_mcq_exam' exam.id %}">
+            {{ exam.title }}
+          </a>
+          <p>{{ exam.description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No exams available at the moment.</p>
+  {% endif %}
+{% endblock %}

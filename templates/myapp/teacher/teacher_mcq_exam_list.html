@@ -1,0 +1,26 @@
+{% extends "myapp/base.html" %}
+{% block content %}
+  <h2>Your MCQ Exams</h2>
+  <ul>
+    {% for exam in exams %}
+      <li>
+        <strong>{{ exam.title }}</strong> 
+        {% if exam.is_published %}
+          (Published)
+          <!-- Unpublish button -->
+          <form method="post" action="{% url 'unpublish_mcq_exam' exam.id %}">
+            {% csrf_token %}
+            <button type="submit">Unpublish</button>
+          </form>
+        {% else %}
+          (Not Published)
+          <!-- Publish button -->
+          <form method="post" action="{% url 'publish_mcq_exam' exam.id %}">
+            {% csrf_token %}
+            <button type="submit">Publish</button>
+          </form>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
